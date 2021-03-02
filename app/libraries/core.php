@@ -27,6 +27,21 @@
 
             // Instantiate controller class
             $this->currentController = new $this->currentController;
+
+            // Check for the second part of the URL
+            if(isset($url[1])) {
+                // Check to see if the method exists in the controller
+                if(method_exists($this->currentController, $url[1])) {
+                    $this->currentMethod = $url[1];
+                    unset($url[1]);
+                }
+            }
+            
+            // Get params
+            $this->params = $url ? array_values($url) : [];
+
+            // Call a callback with arrays of params
+            call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
         }
 
         public function getUrl() {
