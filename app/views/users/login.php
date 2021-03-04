@@ -20,7 +20,6 @@
                         <div class="col pull-right mt-3">
                             <a href="<?php echo URLROOT; ?>/users/register" class="btn btn-light">Don't have an account? Register</a>
                         </div>
-
                 </form>
             </div>
         </div>

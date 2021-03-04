@@ -21,8 +21,8 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="confirm_password">Confirm password: <sup>*</sup></label>
-                        <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data["confirm_password_err"])) ? 'is-invalid' : '';?>" value="<?php echo $data['confirm_password_err']; ?>">
-                        <span class="invalid-feedback"><?php echo $data['username_err']; ?></span>
+                        <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data["confirm_password_err"])) ? 'is-invalid' : '';?>" value="<?php echo $data['confirm_password']; ?>">
+                        <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
                     </div>
 
                         <div class="col pull-right mt-3">
