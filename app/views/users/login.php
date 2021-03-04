@@ -18,7 +18,7 @@
                             <input type="submit" value="Login" class="btn btn-success">
                         </div>
                         <div class="col pull-right mt-3">
-                            <a href="<?php echo URLROOT; ?>/users/register" class="btn btn-light">Don't have an account? Register</a>
+                            <a href="<?php echo URLROOT; ?>/users/login" class="btn btn-light">Don't have an account? Register</a>
                         </div>
                 </form>
             </div>

@@ -66,6 +66,29 @@
         public function login(){
             if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                "username" => trim($_POST["username"]),
+                "password" => trim($_POST["password"]),
+                "username_err" => "",
+                "password_err" => "",
+            ];
+
+            if(empty($data["username"])){
+                $data["username_err"] = "Please enter username";
+            }
+
+            if(empty($data["password"])){
+                $data["password_err"] = "Please enter password";
+            }
+
+            if(empty($data["username_err"]) && empty($data["password_err"])){
+                die("Success");
+            } else {
+                $this->view("users/login", $data);
+            }
+
             } else {
                 $data = [
                     "username" => "",
