@@ -2,18 +2,22 @@
     class Posts extends Controller {
         public function __construct()
         {
-            if(!isset($_SESSION["user_status"])){
-                redirect("pages");
+            if(!isLoggedIn()){
+                redirect("users/login");
             } else if ($_SESSION["user_status"] !== "Admin"){
                 redirect("pages");
             }
+
+            $this->postModel = $this->model("Post");
         }
 
         public function index(){
-            $data = [
+            $posts = $this->postModel->getPosts();
 
+            $data = [
+                "posts" => $posts
             ];
 
-            $this->view("posts/index");
+            $this->view("posts/index", $data);
         }
     }
