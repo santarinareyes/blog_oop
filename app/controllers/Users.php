@@ -23,13 +23,17 @@
 
                 if(empty($data["username"])){
                     $data["username_err"] = "Please enter username";
+                } else {
+                    if($this->userModel->findUserByUsername($data["username"])){
+                        $data["username_err"] = "Username is already taken";
+                    }
                 }
 
                 if(empty($data["email"])){
                     $data["email_err"] = "Please enter email";
                 } else {
                     if($this->userModel->findUserByEmail($data["email"])){
-                        $data["email_err"] = "Email is already registered";
+                        $data["email_err"] = "Email is already taken";
                     }
                 }
 

@@ -19,4 +19,17 @@
                 return false;
             }
         }
+
+        public function findUserByUsername($username){
+            $this->db->query("SELECT * FROM users where username = :username");
+            $this->db->bind(":username", $username);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
