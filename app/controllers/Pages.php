@@ -6,7 +6,8 @@
 
         public function index(){
             $data = [
-                "title" => "Inside The Index",
+                "title" => "Millhouse Blog",
+                "description" => "Welcome to the blog. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, corporis.",
             ];
 
             $this->view("pages/index", $data);
@@ -14,8 +15,8 @@
         
         public function about(){
             $data = [
-                "title" => "Inside About",
-                "testing" => " About Testing "
+                "title" => "About Millhouse Blog",
+                "description" => "Welcome to the blog. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, corporis.",
             ];
             $this->view("pages/about", $data);
         }

@@ -10,5 +10,5 @@
     <title><?php echo TITLE;?></title>
 </head>
 <body>
-<?php require_once APPROOT . "/views/includes/nav.php";?>
-<div class="container">
+<?php require APPROOT . "/views/includes/nav.php";?>
+<div class="container padding-top">
