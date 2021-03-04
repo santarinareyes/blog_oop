@@ -18,16 +18,22 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+          <?php if(isset($_SESSION["username"])) : ?>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT ?>/users/logout">Logout</a>
+          </li>
+          <?php else : ?>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="<?php echo URLROOT; ?>/users/register">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT ?>/users/login">Login</a>
           </li>
+        <?php endif; ?>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
       </div>
     </div>

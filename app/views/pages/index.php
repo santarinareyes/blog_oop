@@ -3,12 +3,14 @@
         <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic"><?php echo $data["title"];?></h1>
             <p class="lead my-3"><?php echo $data["description"];?></p>
+            <?php if(!isset($_SESSION["user_id"])) :?>
+            <a href="<?php echo URLROOT . "/users/login" ?>" class="btn btn-primary lead my-3">Please login to see the content.</a>
+            <?php endif;?>
         </div>
     </div>
 
-        <div class="container marketing">
-
-<!-- Three columns of text below the carousel -->
+<?php if(isset($_SESSION["user_id"])) :?>
+<div class="container marketing">
 <div class="row">
   <div class="col-lg-4">
     <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
@@ -80,4 +82,5 @@
 <!-- /END THE FEATURETTES -->
 
 </div><!-- /.container -->
+<?php endif;?>
 <?php require APPROOT . "/views/includes/footer.php" ?>

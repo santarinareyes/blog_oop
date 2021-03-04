@@ -97,8 +97,22 @@
                 $data["password_err"] = "Please enter password";
             }
 
+            // Checks to see if the Username exist in the database
+            if($this->userModel->findUserByUsername($data["username"])){
+
+            } else {
+                $data["username_err"] = "Username does not exist";
+            }
+
             if(empty($data["username_err"]) && empty($data["password_err"])){
-                die("Success");
+                $loggedInUser = $this->userModel->login($data["username"], $data["password"]);
+                
+                if($loggedInUser){
+                    $this->createUserSession($loggedInUser);
+                } else {
+                    $data["password_err"] = "Password is incorrect";
+                    $this->view("users/login", $data);
+                }
             } else {
                 $this->view("users/login", $data);
             }
@@ -112,6 +126,29 @@
                 ];
 
                 $this->view("users/login", $data);
+            }
+        }
+
+        public function createUserSession($user){
+            $_SESSION["user_id"] = $user->user_id;
+            $_SESSION["username"] = $user->username;
+            $_SESSION["user_status"] = $user->user_status;
+            redirect("pages/index");
+        }
+
+        public function logout(){
+            unset($_SESSION['user_id']);
+            unset($_SESSION['username']);
+            unset($_SESSION['user_status']);
+            session_destroy();
+            redirect("users/login");
+        }
+
+        public function isLoggedIn(){
+            if(isset($_SESSION["user_id"])){
+                return true;
+            } else {
+                return false;
             }
         }
     }

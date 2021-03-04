@@ -34,6 +34,20 @@
             }
         }
 
+        public function login($username, $password){
+            $this->db->query("SELECT * FROM users WHERE username = :username");
+            $this->db->bind(":username", $username);
+
+            $row = $this->db->single();
+            $hashed_password = $row->user_pass;
+
+            if(password_verify($password, $hashed_password)){
+                return $row;
+            } else {
+                return false;
+            }
+        }
+
         public function findUserByUsername($username){
             $this->db->query("SELECT * FROM users where username = :username");
             $this->db->bind(":username", $username);
