@@ -2,14 +2,21 @@
     class Pages extends Controller {
         public function __construct()
         {
-            echo "This is inside Pages <br/>";
         }
 
         public function index(){
+            $data = [
+                "title" => "Inside The Index",
+            ];
 
+            $this->view("pages/index", $data);
         }
-
-        public function about($id){
-            echo $id;
+        
+        public function about(){
+            $data = [
+                "title" => "Inside About",
+                "testing" => " About Testing "
+            ];
+            $this->view("pages/about", $data);
         }
     }
