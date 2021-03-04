@@ -52,6 +52,7 @@
                 if(empty($data["username_err"]) && empty($data["email_err"]) && empty($data["password_err"]) && empty($data["confirm_password_err"])){
                     $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
                     if($this->userModel->register($data)){
+                        flash("register_success", "You are now registered.");
                         redirect("users/login");
                     } else {
                         die("Something went wrong!");
