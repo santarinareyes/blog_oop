@@ -63,4 +63,11 @@
                 $this->view("posts/add", $data);
             }
         }
+
+        public function show($id){
+            $data = [
+
+            ];
+            $this->view("posts/show", $data);
+        }
     }

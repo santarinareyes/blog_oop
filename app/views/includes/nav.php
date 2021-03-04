@@ -18,6 +18,11 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+          <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") : ?>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT ?>/posts">Admin</a>
+          </li>
+          <?php endif; ?>
           <?php if(isset($_SESSION["username"])) : ?>
             <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT ?>/users/logout">Logout</a>
