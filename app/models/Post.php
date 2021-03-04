@@ -14,4 +14,18 @@
 
             return $results = $this->db->resultSet();
         }
+
+        public function addPost($data){
+            $this->db->query("INSERT INTO posts (post_title, post_user_id, post_content) 
+                              VALUES (:post_title, :post_user_id, :post_content)");
+            $this->db->bind(":post_title", $data['title']);
+            $this->db->bind(":post_user_id", $data['user_id']);
+            $this->db->bind(":post_content", $data['content']);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
