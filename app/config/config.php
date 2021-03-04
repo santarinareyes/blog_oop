@@ -10,4 +10,5 @@
     // URL Root
     define("URLROOT", "http://localhost/blog_oop");
     // Site name
-    define("SITENAME", "Richard | OOP Practice");
+    define("TITLE", "Millhouse Blog");
+    define("SITENAME", "Millhouse");
