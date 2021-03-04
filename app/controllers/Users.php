@@ -133,7 +133,12 @@
             $_SESSION["user_id"] = $user->user_id;
             $_SESSION["username"] = $user->username;
             $_SESSION["user_status"] = $user->user_status;
-            redirect("pages/index");
+
+            if($_SESSION["user_status"] !== "Admin"){
+                redirect("pages/index");
+            } else {
+                redirect("posts");
+            }
         }
 
         public function logout(){
