@@ -10,28 +10,33 @@
 
             $this->postModel = $this->model("Post");
             $this->userModel = $this->model("User");
+            $this->categoryModel = $this->model("category");
         }
-
+        
         public function index(){
+            $category = $this->categoryModel->getCategories();
             $posts = $this->postModel->getPosts();
 
             $data = [
-                "posts" => $posts
+                "posts" => $posts,
+                "category" => $category
             ];
 
             $this->view("posts/index", $data);
         }
 
         public function add(){
+            $category = $this->categoryModel->getCategories();
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 $data = [
+                    "category" => $category,
                     "title" => trim($_POST["title"]),
                     "content" => trim($_POST["content"]),
                     "user_id" => $_SESSION["user_id"],
                     "title_err" => "",
-                    "content_err" => ""
+                    "content_err" => "",
                 ];
 
                 if(empty($data["title"])){
@@ -57,6 +62,7 @@
             } else {
                 
                 $data = [
+                    "category" => $category,
                     "title" => "",
                     "content" => ""
                 ];
@@ -66,10 +72,12 @@
         }
 
         public function edit($id){
+            $category = $this->categoryModel->getCategories();
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 $data = [
+                    "category" => $category,
                     "id" => $id,
                     "title" => trim($_POST["title"]),
                     "content" => trim($_POST["content"]),
@@ -102,6 +110,7 @@
 
                 $post = $this->postModel->getSinglePost($id);
                 $data = [
+                    "category" => $category,
                     "id" => $id,
                     "title" => $post->post_title,
                     "content" => $post->post_content
@@ -112,10 +121,12 @@
         }
 
         public function show($id){
+            $category = $this->categoryModel->getCategories();
             $post = $this->postModel->getSinglePost($id);
             $user = $this->userModel->getUserById($post->post_user_id);
 
             $data = [
+                "category" => $category,
                 "post" => $post,
                 "user" => $user
             ];

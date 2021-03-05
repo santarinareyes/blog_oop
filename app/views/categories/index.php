@@ -11,11 +11,11 @@
     </div>
     <hr>
 <?php flash("post_message"); ?>
-        <?php foreach($data["categories"] as $category) : ?>
+        <?php foreach($data["category"] as $category) : ?>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="card card-body mb-3">
         <div class="btn-group">
-        <a class="btn btn-primary p-2">
+        <a class="btn btn-primary p-2" href="<?php echo URLROOT; ?>/categories/show/<?php echo $category->cat_id; ?>">
         <?php echo $category->cat_title;?>
         </a>
         <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>

@@ -3,14 +3,17 @@
         public function __construct()
         {
             $this->userModel = $this->model("User");
+            $this->categoryModel = $this->model("category");
         }
 
         public function register(){
+            $category = $this->categoryModel->getCategories();
             if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 $data = [
+                    "category" => $category,
                     "username" => trim($_POST["username"]),
                     "email" => trim($_POST["email"]),
                     "password" => trim($_POST["password"]),
@@ -63,6 +66,7 @@
 
             } else {
                 $data = [
+                    "category" => $category,
                     "username" => "",
                     "email" => "",
                     "password" => "",
@@ -78,11 +82,13 @@
         }
 
         public function login(){
+            $category = $this->categoryModel->getCategories();
             if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
+                "category" => $category,
                 "username" => trim($_POST["username"]),
                 "password" => trim($_POST["password"]),
                 "username_err" => "",
@@ -119,6 +125,7 @@
 
             } else {
                 $data = [
+                    "category" => $category,
                     "username" => "",
                     "password" => "",
                     "username_err" => "",

@@ -14,7 +14,7 @@
                 <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownCategories" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownCategories">
                     <?php foreach($data["category"] as $category) :?>
-                      <li><a class="dropdown-item" href="#"><?php echo $category->cat_title;?></a></li>
+                      <li><a class="dropdown-item" href="<?php echo URLROOT ?>/categories/show/<?php echo $category->cat_id; ?>"><?php echo $category->cat_title;?></a></li>
                     <?php endforeach; ?>
                   </ul>
               </li>

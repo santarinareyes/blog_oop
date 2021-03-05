@@ -19,9 +19,12 @@
         }
         
         public function about(){
+            $category = $this->categoryModel->getCategories();
+
             $data = [
                 "title" => "About Millhouse Blog",
                 "description" => "Welcome to the blog. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, corporis.",
+                "category" => $category
             ];
             $this->view("pages/about", $data);
         }

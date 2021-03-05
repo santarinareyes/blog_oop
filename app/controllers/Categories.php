@@ -15,7 +15,7 @@
             $categories = $this->categoryModel->getCategories();
 
             $data = [
-                "categories" => $categories
+                "category" => $categories
             ];
 
             $this->view("categories/index", $data);
