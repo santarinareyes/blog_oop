@@ -1,12 +1,14 @@
 <?php require APPROOT . "/views/includes/header.php"; ?>
     <div class="row mb-3">
         <div class="col-md-6">
-            <h1>Posts</h1>
+            <h1>Categories</h1>
         </div>
         <div class="col-md-6">
+            <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
             <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
                 <i class="fa fa-pencil"></i>Add category
             </a>
+            <?php endif; ?>
         </div>
     </div>
     <hr>

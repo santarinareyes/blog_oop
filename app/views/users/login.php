@@ -4,6 +4,7 @@
             <div class="card card-body bg-light mt-5">
                 <?php flash("register_success");?>
                 <h2>Login</h2>
+                <p class="text-muted">Please log in to see any content</p>
                 <form action="<?php echo URLROOT; ?>/users/login" method="POST">
                     <div class="form-group mt-3">
                         <label for="username">Username: <sup>*</sup></label>

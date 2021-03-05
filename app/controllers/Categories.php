@@ -4,11 +4,11 @@
         {
             if(!isLoggedIn()){
                 redirect("users/login");
-            } else if ($_SESSION["user_status"] !== "Admin"){
-                redirect("pages");
             }
+            
             $this->userModel = $this->model("User");
             $this->categoryModel = $this->model("Category");
+            $this->postModel = $this->model("Post");
         }
         
         public function index(){
@@ -35,5 +35,18 @@
             ];
 
             $this->view("categories/show", $data);
+        }
+
+        public function post($id){
+            $category = $this->categoryModel->getCategories();
+            $post = $this->postModel->getSinglePost($id);
+            $user = $this->userModel->getUserById($post->post_user_id);
+
+            $data = [
+                "category" => $category,
+                "post" => $post,
+                "user" => $user
+            ];
+            $this->view("categories/post", $data);
         }
     }
