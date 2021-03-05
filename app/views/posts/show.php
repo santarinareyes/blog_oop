@@ -3,11 +3,11 @@
 <hr>
 <h1><?php echo $data["post"]->post_title?></h1>
 <div class="bg-secondary text-white p-2 mb-3">
-    Written by <?php echo $data["user"]->username?> on <?php echo $data["post"]->post_created; ?>
+    <span>Written by <?php echo $data["user"]->username?></span> <span class="pull-right"> on <?php echo $data["post"]->post_created; ?></span>
 </div>
 <p><?php echo $data["post"]->post_content; ?></p>
 <hr class="mt-5">
-<form action="<?php URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>">
+<form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>" method="POST">
 <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data["post"]->post_id; ?>" class="btn btn-outline-secondary">Edit</a>
 <input class="btn btn-outline-danger pull-right" type="submit" value="Delete">
 </form>
