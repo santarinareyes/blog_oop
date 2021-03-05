@@ -10,7 +10,7 @@
 
             $this->postModel = $this->model("Post");
             $this->userModel = $this->model("User");
-            $this->categoryModel = $this->model("category");
+            $this->categoryModel = $this->model("Category");
         }
         
         public function index(){
