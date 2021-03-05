@@ -10,14 +10,30 @@
             </a>
         </div>
     </div>
+    <hr>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <?php foreach($data["posts"] as $post) : ?>
-    <div class="card card-body mb-3">
-        <h4 class="card-title"><?php echo $post->post_title?></h4>
-        <div class="bg-light p-2 mb-3">
-            Written by <?php echo $post->username ?> on <?php echo $post->post_created ?>
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $post->post_title?></h4>
+                        <p style="min-height: 5rem;" class="card-text"><?php echo $post->post_content; ?></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                                <form action="">
+                                    <div class="btn-group">
+                                        <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id ?>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
+                                </form>
+                                </div>
+                            <small class="text-muted">Posted by <?php echo $post->username ?></small>
+                        </div>
+                    </div>
+            </div>
         </div>
-        <p class="card-text"><?php echo $post->post_content; ?></p>
-        <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id ?>" class="btn btn-dark">Go to post</a>
-    </div>
     <?php endforeach;?>
+</div>
+<hr>
 <?php require APPROOT . "/views/includes/footer.php" ?>
+        
