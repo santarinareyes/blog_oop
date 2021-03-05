@@ -5,16 +5,19 @@
         </div>
         <div class="col-md-6">
             <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
-                <i class="fa fa-pencil"></i>New category
+                <i class="fa fa-pencil"></i>Add category
             </a>
         </div>
     </div>
     <hr>
 <?php flash("post_message"); ?>
+        <?php foreach($data["categories"] as $category) : ?>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="card card-body mb-3">
         <div class="btn-group">
-        <a class="btn btn-primary p-2">CATEGORY</a>
+        <a class="btn btn-primary p-2">
+        <?php echo $category->cat_title;?>
+        </a>
         <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
         <span class="input-group-btn">
         <a class="btn btn-outline-warning p-2">EDIT</a>
@@ -26,6 +29,7 @@
         </div>
     </div>
     </div>
+        <?php endforeach; ?>
 
     
 </div>

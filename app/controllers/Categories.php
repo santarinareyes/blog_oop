@@ -7,12 +7,15 @@
             } else if ($_SESSION["user_status"] !== "Admin"){
                 redirect("pages");
             }
+
+            $this->categoryModel = $this->model("category");
         }
 
         public function index(){
+            $categories = $this->categoryModel->getCategories();
+
             $data = [
-                "title" => "Millhouse Blog",
-                "description" => "Welcome to the blog. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, corporis.",
+                "categories" => $categories
             ];
 
             $this->view("categories/index", $data);
