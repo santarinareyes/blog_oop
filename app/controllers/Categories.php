@@ -1,5 +1,14 @@
 <?php 
     class Categories extends Controller {
+        public function __construct()
+        {
+            if(!isLoggedIn()){
+                redirect("users/login");
+            } else if ($_SESSION["user_status"] !== "Admin"){
+                redirect("pages");
+            }
+        }
+
         public function index(){
             $data = [
                 "title" => "Millhouse Blog",

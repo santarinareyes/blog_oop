@@ -11,20 +11,24 @@
             <a class="nav-link" aria-current="page" href="<?php echo URLROOT; ?>">Home</a>
           </li>
              <li class="nav-item dropdown">
-                <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownCategories" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownCategories">
                       <li><a class="dropdown-item" href="#">Action</a></li>
                   </ul>
               </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT ?>/pages/about">About</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-md-0">
           <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") : ?>
-            <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT ?>/posts">Admin</a>
-          </li>
+            <li class="nav-item dropdown">
+                <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
+                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/posts">Posts</a></li>
+                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/categories">Categories</a></li>
+                  </ul>
+              </li>
           <?php endif; ?>
           <?php if(isset($_SESSION["username"])) : ?>
             <li class="nav-item">

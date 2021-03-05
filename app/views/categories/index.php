@@ -15,12 +15,14 @@
     <div class="card card-body mb-3">
         <div class="btn-group">
         <a class="btn btn-primary p-2">CATEGORY</a>
+        <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
         <span class="input-group-btn">
         <a class="btn btn-outline-warning p-2">EDIT</a>
         </span>
         <span class="input-group-btn">
         <a class="btn btn-outline-danger p-2">DELETE</a>
         </span>
+        <?php endif; ?>
         </div>
     </div>
     </div>
