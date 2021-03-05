@@ -98,10 +98,12 @@
 
 
             } else {
-                
+
+                $post = $this->postModel->getSinglePost($id);
                 $data = [
-                    "title" => "",
-                    "content" => ""
+                    "id" => $id,
+                    "title" => $post->post_title,
+                    "content" => $post->post_content
                 ];
     
                 $this->view("posts/edit", $data);
