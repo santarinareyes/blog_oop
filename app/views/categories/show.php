@@ -4,9 +4,11 @@
             <h1><?php echo $data["singleCat"]->cat_title; ?></h1>
         </div>
         <div class="col-md-6">
+            <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
             <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
-                <i class="fa fa-pencil"></i>Add Post
+                <i class="fa fa-pencil"></i>Add category
             </a>
+            <?php endif; ?>
         </div>
     </div>
     <hr>

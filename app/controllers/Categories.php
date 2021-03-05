@@ -25,11 +25,9 @@
             $category = $this->categoryModel->singleCategory($id);
             $categories = $this->categoryModel->getCategories();
             $post = $this->categoryModel->getCategoryPosts($id);
-            $user = $this->userModel->getUserById($post->post_user_id);
 
             $data = [
                 "posts" => $post,
-                "users" => $user,
                 "singleCat" => $category,
                 "category" => $categories
             ];

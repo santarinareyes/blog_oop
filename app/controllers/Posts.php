@@ -33,14 +33,20 @@
                 $data = [
                     "category" => $category,
                     "title" => trim($_POST["title"]),
+                    "post_category" => $_POST["category"],
                     "content" => trim($_POST["content"]),
                     "user_id" => $_SESSION["user_id"],
                     "title_err" => "",
+                    "post_category_err" => "",
                     "content_err" => "",
                 ];
 
                 if(empty($data["title"])){
                     $data["title_err"] = "Please enter title";
+                }
+
+                if($data["post_category"] === "no"){
+                    $data["post_category_err"] = "Please choose a category";
                 }
 
                 if(empty($data["content"])){
@@ -64,6 +70,7 @@
                 $data = [
                     "category" => $category,
                     "title" => "",
+                    "post_category" => "",
                     "content" => ""
                 ];
     
