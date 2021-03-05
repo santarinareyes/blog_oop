@@ -70,6 +70,7 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 $data = [
+                    "id" => $id,
                     "title" => trim($_POST["title"]),
                     "content" => trim($_POST["content"]),
                     "user_id" => $_SESSION["user_id"],
@@ -86,14 +87,14 @@
                 }
 
                 if(empty($data["title_err"]) && empty($data["content_err"])){
-                    if($this->postModel->addPost($data)){
-                        flash("post_message", "Post created");
+                    if($this->postModel->updatePost($data)){
+                        flash("post_message", "Post Updated");
                         redirect("posts");
                     } else {
                         die("Something went wrong!");
                     }
                 } else {
-                    $this->view("posts/add", $data);
+                    $this->view("posts/edit", $data);
                 }
 
 

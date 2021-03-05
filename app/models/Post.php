@@ -29,6 +29,22 @@
             }
         }
 
+        public function updatePost($data){
+            $this->db->query("UPDATE posts SET 
+                              post_title = :post_title, 
+                              post_content = :post_content 
+                              WHERE post_id = :post_id");
+            $this->db->bind(":post_id", $data['id']);
+            $this->db->bind(":post_title", $data['title']);
+            $this->db->bind(":post_content", $data['content']);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function getSinglePost($id){
             $this->db->query("SELECT * FROM posts WHERE post_id = :id");
             $this->db->bind(":id", $id);
