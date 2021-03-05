@@ -10,9 +10,12 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="<?php echo URLROOT; ?>">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="">Category</a>
-          </li>
+             <li class="nav-item dropdown">
+                <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                  </ul>
+              </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT ?>/pages/about">About</a>
           </li>

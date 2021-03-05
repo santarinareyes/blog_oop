@@ -20,7 +20,7 @@
                         <h4 class="card-title"><?php echo $post->post_title?></h4>
                         <p style="min-height: 5rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
-                                <form action="">
+                                <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $post->post_id ?>" method="post">
                                     <div class="btn-group">
                                         <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
                                         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
