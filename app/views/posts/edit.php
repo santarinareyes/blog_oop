@@ -10,9 +10,12 @@
         </div>
         <div class="form-group mt-3">
             <select name="category" class="form-select form-control-lg <?php echo (!empty($data["post_category_err"])) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
-                <option value="no" selected>Choose category <sup>*</sup></option>
                 <?php foreach($data["category"] as $category) : ?>
+                <?php if($category->cat_id === $data["post_category"]) : ?>
+                <option value="<?php echo $data["post_category"]; ?>" selected><?php echo $category->cat_title; ?></option>
+                <?php elseif($category->cat_id !== $data["post_category"]) : ?>
                 <option value="<?php echo $category->cat_id ?>"><?php echo $category->cat_title?></option>
+                <?php endif; ?>
                 <?php endforeach; ?>
             </select>
             <span class="invalid-feedback"><?php echo $data['post_category_err']; ?></span>

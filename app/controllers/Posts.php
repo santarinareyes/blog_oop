@@ -136,6 +136,7 @@
                 $data = [
                     "category" => $category,
                     "id" => $id,
+                    "post_category" => $post->post_category_id,
                     "title" => $post->post_title,
                     "content" => $post->post_content,
                     "tags" => "$post->post_tags"
