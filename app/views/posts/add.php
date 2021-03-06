@@ -2,7 +2,7 @@
 <a href="<?php echo URLROOT ?>/posts" class="btn btn-light"><i class="fa fa-chevron-left"></i> Go back</a>
 <div class="card card-body bg-light mt-5">
     <h2>Add post</h2>
-    <form action="<?php echo URLROOT; ?>/posts/add" method="POST">
+    <form action="<?php echo URLROOT; ?>/posts/add" method="POST" enctype="multipart/form-data">
         <div class="form-group mt-3">
             <label for="title">Title: <sup>*</sup></label>
             <input type="text" name="title" class="form-control <?php echo (!empty($data["title_err"])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>">
@@ -17,9 +17,10 @@
             </select>
             <span class="invalid-feedback"><?php echo $data['post_category_err']; ?></span>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3 <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>">
         <label for="image">Select Image</label>
         <input type="file" name="image" class="form-control">
+        <span class="invalid-feedback"><?php echo $data['image_err']; ?></span>
         </div>
         <div class="form-group mt-3">
             <label for="content">Content: <sup>*</sup></label>

@@ -34,12 +34,19 @@
                     "category" => $category,
                     "title" => trim($_POST["title"]),
                     "post_category" => $_POST["category"],
+                    "image" => $_FILES["image"],
                     "content" => trim($_POST["content"]),
+                    "tags" => trim($_POST["tags"]),
                     "user_id" => $_SESSION["user_id"],
                     "title_err" => "",
                     "post_category_err" => "",
-                    "content_err" => "",
+                    "image_err" => "",
+                    "content_err" => ""
                 ];
+
+                if($data["image"]["size"]){
+                    $data["image_err"] = "test";
+                }
 
                 if(empty($data["title"])){
                     $data["title_err"] = "Please enter title";
@@ -53,7 +60,7 @@
                     $data["content_err"] = "Please enter content";
                 }
 
-                if(empty($data["title_err"]) && empty($data["content_err"])){
+                if(empty($data["title_err"]) && empty($data["content_err"]) && empty($data["post_category_err"])){
                     if($this->postModel->addPost($data)){
                         flash("post_message", "Post created");
                         redirect("posts");
@@ -71,7 +78,8 @@
                     "category" => $category,
                     "title" => "",
                     "post_category" => "",
-                    "content" => ""
+                    "content" => "",
+                    "tags" => ""
                 ];
     
                 $this->view("posts/add", $data);
@@ -87,9 +95,14 @@
                     "category" => $category,
                     "id" => $id,
                     "title" => trim($_POST["title"]),
+                    "post_category" => $_POST["category"],
+                    "image" => $_FILES["image"],
                     "content" => trim($_POST["content"]),
+                    "tags" => trim($_POST["tags"]),
                     "user_id" => $_SESSION["user_id"],
                     "title_err" => "",
+                    "post_category_err" => "",
+                    "image_err" => "",
                     "content_err" => ""
                 ];
 
@@ -97,11 +110,15 @@
                     $data["title_err"] = "Please enter title";
                 }
 
+                if($data["post_category"] === "no"){
+                    $data["post_category_err"] = "Please choose a category";
+                }
+
                 if(empty($data["content"])){
                     $data["content_err"] = "Please enter content";
                 }
 
-                if(empty($data["title_err"]) && empty($data["content_err"])){
+                if(empty($data["title_err"]) && empty($data["content_err"]) && empty($data["post_category_err"])){
                     if($this->postModel->updatePost($data)){
                         flash("post_message", "Post Updated");
                         redirect("posts");
@@ -120,7 +137,8 @@
                     "category" => $category,
                     "id" => $id,
                     "title" => $post->post_title,
-                    "content" => $post->post_content
+                    "content" => $post->post_content,
+                    "tags" => "$post->post_tags"
                 ];
     
                 $this->view("posts/edit", $data);
@@ -135,6 +153,7 @@
             $data = [
                 "category" => $category,
                 "post" => $post,
+                "tags" => explode(",", $post->post_tags),
                 "user" => $user
             ];
             $this->view("posts/show", $data);

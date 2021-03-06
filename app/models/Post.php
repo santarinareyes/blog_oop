@@ -16,11 +16,13 @@
         }
 
         public function addPost($data){
-            $this->db->query("INSERT INTO posts (post_title, post_user_id, post_content) 
-                              VALUES (:post_title, :post_user_id, :post_content)");
+            $this->db->query("INSERT INTO posts (post_title, post_category_id, post_user_id, post_content, post_tags) 
+                              VALUES (:post_title, :post_category, :post_user_id, :post_content, :post_tags)");
             $this->db->bind(":post_title", $data['title']);
+            $this->db->bind(":post_category", $data['post_category']);
             $this->db->bind(":post_user_id", $data['user_id']);
             $this->db->bind(":post_content", $data['content']);
+            $this->db->bind(":post_tags", $data['tags']);
 
             if($this->db->execute()){
                 return true;
@@ -32,11 +34,15 @@
         public function updatePost($data){
             $this->db->query("UPDATE posts SET 
                               post_title = :post_title, 
-                              post_content = :post_content 
+                              post_category_id = :post_category, 
+                              post_content = :post_content, 
+                              post_tags = :post_tags 
                               WHERE post_id = :post_id");
             $this->db->bind(":post_id", $data['id']);
             $this->db->bind(":post_title", $data['title']);
+            $this->db->bind(":post_category", $data['post_category']);
             $this->db->bind(":post_content", $data['content']);
+            $this->db->bind(":post_tags", $data['tags']);
 
             if($this->db->execute()){
                 return true;
