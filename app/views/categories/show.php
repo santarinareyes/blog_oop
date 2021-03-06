@@ -17,16 +17,17 @@
     <?php foreach($data["posts"] as $post) : ?>
         <div class="col">
             <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <img src="<?php echo URLROOT; ?>/images/<?php echo $post->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $post->post_title?></h4>
                         <p style="min-height: 5rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                                 <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $post->post_id ?>" method="post">
                                     <div class="btn-group">
-                                        <a href="<?php echo URLROOT; ?>/categories/post/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Read article</a>
+                                        <a href="<?php echo URLROOT; ?>/categories/post/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Read</a>
                                         <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
                                         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="<?php echo URLROOT; ?>/posts/image/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Change image</a>
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
                                         <?php endif; ?>
                                 </form>
@@ -38,6 +39,6 @@
         </div>
     <?php endforeach;?>
 </div>
-<hr>
+<hr class="mt-5">
 <?php require APPROOT . "/views/includes/footer.php" ?>
         

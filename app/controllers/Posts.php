@@ -183,6 +183,7 @@
 
                 $data = [
                     "post_id" => $id,
+                    "post" => $post,
                     "post_category" => $_POST["category"],
                     "image" => $_FILES['image']['name'],
                     "image_tmp" => $_FILES['image']['tmp_name'],

@@ -20,7 +20,7 @@
     <p class="lead"><?php echo $data["posts"][0]->post_content;?></p>
   </div>
   <div class="col-md-5">
-  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][0]->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
+  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][0]->post_image; ?>" alt="image" class="bd-placeholder-img card-img-top" width="500" height="500">
 
   </div>
 </div>
@@ -33,7 +33,7 @@
     <p class="lead"><?php echo $data["posts"][1]->post_content;?></p>
   </div>
   <div class="col-md-5 order-md-1">
-  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][1]->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
+  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][1]->post_image; ?>" alt="image"  class="bd-placeholder-img card-img-top" width="500" height="500">
 
   </div>
 </div>
@@ -46,7 +46,7 @@
     <p class="lead"><?php echo $data["posts"][2]->post_content;?></p>
   </div>
   <div class="col-md-5">
-  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][2]->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
+  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["posts"][2]->post_image; ?>" alt="image"  class="bd-placeholder-img card-img-top" width="500" height="500">
 
   </div>
 </div>
