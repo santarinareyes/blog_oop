@@ -124,4 +124,13 @@
                 $this->view("categories/edit", $data);
             }
         }
+
+        public function delete($id){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                if($this->categoryModel->deleteCategory($id)){
+                    flash("post_message", "Category deleted");
+                    redirect("categories");
+                }
+            }
+        }
     }

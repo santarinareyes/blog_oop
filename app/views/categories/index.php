@@ -25,7 +25,9 @@
         <a href="<?php echo URLROOT; ?>/categories/edit/<?php echo $category->cat_id; ?>" class="btn btn-outline-warning p-2">EDIT</a>
         </span>
         <span class="input-group-btn">
-        <a class="btn btn-outline-danger p-2">DELETE</a>
+        <form action="<?php echo URLROOT ?>/categories/delete/<?php echo $category->cat_id; ?>" method="post">
+        <input type="submit" value="DELETE" class="btn btn-outline-danger p-2">
+        </form>
         </span>
         <?php endif; ?>
         </div>
