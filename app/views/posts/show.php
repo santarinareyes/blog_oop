@@ -1,11 +1,17 @@
 <?php require APPROOT . "/views/includes/header.php"; ?>
 <a href="<?php echo URLROOT ?>/posts" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Go back</a>
 <hr>
-<h1 ><?php echo $data["post"]->post_title?> <small class="text-muted"><?php echo $category->cat_title; ?></small></h1>
-<div class="bg-secondary text-white p-2 mb-3">
-    <span>Written by <?php echo $data["user"]->username?></span> <span class="pull-right"> on <?php echo $data["post"]->post_created; ?></span>
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading"><?php echo $data["post"]->post_title; ?> <span class="text-muted"><small><small> <?php echo $data["post"]->post_created ?></small></small></span></h2>
+    <p class="text-muted">Written by <?php echo $data["user"]->username ?></p>
+    <p class="lead"><?php echo $data["post"]->post_content;?></p>
+  </div>
+  <div class="col-md-5">
+  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["post"]->post_image; ?>" alt="image" class="bd-placeholder-img card-img-top" width="500" height="500">
+
+  </div>
 </div>
-<p><?php echo $data["post"]->post_content; ?></p>
 <hr>
 <p class="btn btn-secondary disabled">Tags <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></p>
 <?php foreach($data['tags'] as $tag) : ?>

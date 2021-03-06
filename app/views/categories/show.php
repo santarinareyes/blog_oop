@@ -41,4 +41,3 @@
 </div>
 <hr class="mt-5">
 <?php require APPROOT . "/views/includes/footer.php" ?>
-        

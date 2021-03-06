@@ -1,11 +1,17 @@
 <?php require APPROOT . "/views/includes/header.php"; ?>
 <a href="<?php echo URLROOT ?>/categories/show/<?php echo $data["post"]->post_category_id; ?>" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Read other articles in the same category</a>
-<hr>
-<h1><?php echo $data["post"]->post_title?></h1>
-<div class="bg-secondary text-white p-2 mb-3">
-    <span>Written by <?php echo $data["user"]->username?></span> <span class="pull-right"> on <?php echo $data["post"]->post_created; ?></span>
+<hr class="featurette-divider">
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading"><?php echo $data["post"]->post_title; ?> <span class="text-muted"><small><small> <?php echo $data["post"]->post_created ?></small></small></span></h2>
+    <p class="text-muted">Written by <?php echo $data["user"]->username ?></p>
+    <p class="lead"><?php echo $data["post"]->post_content;?></p>
+  </div>
+  <div class="col-md-5">
+  <img src="<?php echo URLROOT; ?>/images/<?php echo $data["post"]->post_image; ?>" alt="image" class="bd-placeholder-img card-img-top" width="500" height="500">
+
+  </div>
 </div>
-<p><?php echo $data["post"]->post_content; ?></p>
 <hr class="mt-5">
 <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
 <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>" method="POST">
