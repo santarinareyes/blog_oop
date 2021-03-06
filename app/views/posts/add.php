@@ -17,9 +17,9 @@
             </select>
             <span class="invalid-feedback"><?php echo $data['post_category_err']; ?></span>
         </div>
-        <div class="form-group mt-3 <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>">
+        <div class="form-group mt-3">
         <label for="image">Select Image</label>
-        <input type="file" name="image" class="form-control">
+        <input type="file" name="image" class="form-control <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>" >
         <span class="invalid-feedback"><?php echo $data['image_err']; ?></span>
         </div>
         <div class="form-group mt-3">

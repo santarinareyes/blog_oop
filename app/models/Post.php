@@ -16,8 +16,9 @@
         }
 
         public function addPost($data){
-            $this->db->query("INSERT INTO posts (post_title, post_category_id, post_user_id, post_content, post_tags) 
-                              VALUES (:post_title, :post_category, :post_user_id, :post_content, :post_tags)");
+            $this->db->query("INSERT INTO posts (post_image, post_title, post_category_id, post_user_id, post_content, post_tags) 
+                              VALUES (:post_image, :post_title, :post_category, :post_user_id, :post_content, :post_tags)");
+            $this->db->bind(":post_image", $data['image']);
             $this->db->bind(":post_title", $data['title']);
             $this->db->bind(":post_category", $data['post_category']);
             $this->db->bind(":post_user_id", $data['user_id']);
