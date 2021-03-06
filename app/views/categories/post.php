@@ -16,7 +16,7 @@
 <?php endif; ?>
 <div class="card card-body bg-light mt-5">
   <h4>Leave a Comment:</h4>
-  <form role="form" method="post" action="">
+  <form role="form" method="post" action="<?php echo URLROOT ?>/categories/commentadd/<?php echo $data["post_id"] ?>">
     <div class="form-group">
       <textarea
         class="form-control"

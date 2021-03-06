@@ -51,21 +51,6 @@
                 "new_comment_user" => "",
             ];
 
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $data["new_comment"] = $_POST["comment_content"];
-                $data["new_comment_user"] = $_SESSION["user_id"];
-
-                if(!empty($data["new_comment"])) {
-                    if($this->postModel->addComment($data)) {
-                        flash("post_message", "Comment submitted");
-                        redirect("categories/post/$id");
-                    } else {
-                        die("Something went wrong!");
-                    }
-                }
-            }
-
             $this->view("categories/post", $data);
         }
 
@@ -166,6 +151,29 @@
                     redirect("categories/post/$post_id");
                 } else {
                     die("Something went wrong!");
+                }
+            }
+        }
+
+        public function commentAdd($id){
+            $data = [
+                "post_id" => $id,
+                "new_comment" => "",
+                "new_comment_user" => "",
+            ];
+
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $data["new_comment"] = $_POST["comment_content"];
+                $data["new_comment_user"] = $_SESSION["user_id"];
+
+                if(!empty($data["new_comment"])) {
+                    if($this->postModel->addComment($data)) {
+                        flash("post_message", "Comment submitted");
+                        redirect("categories/post/$id");
+                    } else {
+                        die("Something went wrong!");
+                    }
                 }
             }
         }
