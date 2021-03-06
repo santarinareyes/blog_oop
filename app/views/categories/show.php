@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
             <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
-                <i class="fa fa-pencil"></i>Add category
+                <i class="fa fa-pencil"></i>Add post
             </a>
             <?php endif; ?>
         </div>
@@ -24,9 +24,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                                 <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $post->post_id ?>" method="post">
                                     <div class="btn-group">
-                                        <a href="<?php echo URLROOT; ?>/categories/post/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="<?php echo URLROOT; ?>/categories/post/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Read article</a>
+                                        <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
                                         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
+                                        <?php endif; ?>
                                 </form>
                                 </div>
                             <small class="text-muted">Posted by <?php echo $post->username ?></small>

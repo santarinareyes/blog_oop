@@ -7,9 +7,11 @@
 </div>
 <p><?php echo $data["post"]->post_content; ?></p>
 <hr class="mt-5">
+<?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
 <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>" method="POST">
 <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data["post"]->post_id; ?>" class="btn btn-outline-secondary">Edit</a>
 <input class="btn btn-outline-danger pull-right" type="submit" value="Delete">
 </form>
 <hr>
+<?php endif; ?>
 <?php require APPROOT . "/views/includes/footer.php" ?>

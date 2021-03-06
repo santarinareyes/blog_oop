@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-6">
             <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
-            <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
+            <a href="<?php echo URLROOT; ?>/categories/add" class="btn btn-primary pull-right">
                 <i class="fa fa-pencil"></i>Add category
             </a>
             <?php endif; ?>
@@ -22,7 +22,7 @@
         </a>
         <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
         <span class="input-group-btn">
-        <a class="btn btn-outline-warning p-2">EDIT</a>
+        <a href="<?php echo URLROOT; ?>/categories/edit/<?php echo $category->cat_id; ?>" class="btn btn-outline-warning p-2">EDIT</a>
         </span>
         <span class="input-group-btn">
         <a class="btn btn-outline-danger p-2">DELETE</a>
@@ -34,21 +34,7 @@
         <?php endforeach; ?>
 
     
+<hr class="mt-5">
 </div>
-<hr>
-<!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="card card-body mb-3">
-        <a class="btn btn-primary p-2">CATEGORY</a>
-    </div>
-        <span>
-    <div class="card card-body mb-3">
-        <span class="input-group-btn">
-        <a class="btn btn-primary p-2">ADMIN</a>
-        <a class="btn btn-primary p-2">ADMIN</a>
-        </span>
-        </span>
-    </div>
-</div>
-<hr> -->
 <?php require APPROOT . "/views/includes/footer.php" ?>
         

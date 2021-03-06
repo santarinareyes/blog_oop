@@ -26,4 +26,34 @@
 
             return $results = $this->db->resultSet();
         }
+
+        public function addCategory($data){
+            $this->db->query("INSERT INTO categories (cat_title) VALUES (:cat_title)");
+            $this->db->bind(":cat_title", $data["title"]);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function getSingleCategory($id){
+            $this->db->query("SELECT * FROM categories WHERE cat_id = :id");
+            $this->db->bind(":id", $id);
+
+            return $this->db->single();
+        }
+
+        public function updateCategory($data){
+            $this->db->query("UPDATE categories SET cat_title = :title WHERE cat_id = :id");
+            $this->db->bind(":title", $data["title"]);
+            $this->db->bind(":id", $data["id"]);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

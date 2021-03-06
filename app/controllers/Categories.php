@@ -47,4 +47,81 @@
             ];
             $this->view("categories/post", $data);
         }
+
+        public function add(){
+            $category = $this->categoryModel->getCategories();
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    "category" => $category,
+                    "title" => trim($_POST["title"]),
+                    "title_err" => "",
+                ];
+
+                if(empty($data["title"])){
+                    $data["title_err"] = "Please enter a title";
+                }
+
+                if(!empty($data["title"])){
+                    if($this->categoryModel->addCategory($data));
+                    flash("post_message", "Category created");
+                    redirect("categories");
+                } else {
+                    die("Something went wrong!");
+                }
+
+                $this->view("categories/add", $data);
+
+            } else {
+
+                $data = [
+                    "category" => $category,
+                    "title" => "",
+                ];
+
+                $this->view("categories/add", $data);
+            }
+        }
+
+        public function edit($id){
+            $category = $this->categoryModel->getCategories();
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    "category" => $category,
+                    "title" => $_POST["title"],
+                    "id" => $id,
+                    "title_err" => ""
+                ];
+
+                if(empty($data["title"])){
+                    $data["title_err"] = "Please enter a title";
+                }
+
+                if(empty($data["title_err"])){
+                    if($this->categoryModel->updateCategory($data)){
+                        flash("post_message", "Category updated");
+                        redirect("categories");
+                    }
+                } else {
+                    die("Something went wrong!");
+                }
+
+                $this->view("categories/edit", $data);
+            } else {
+
+                $singleCat = $this->categoryModel->getSingleCategory($id);
+                $category = $this->categoryModel->getCategories();
+
+                $data = [
+                    "id" => $id,
+                    "category" => $category,
+                    "title" => $singleCat->cat_title
+                ];
+
+                $this->view("categories/edit", $data);
+            }
+        }
     }
