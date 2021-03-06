@@ -9,7 +9,7 @@
 <hr class="mt-5">
 <div class="card card-body bg-light mt-5">
   <h4>Leave a Comment:</h4>
-  <form role="form" method="post" action="#comment_submitted">
+  <form role="form" method="post" action="">
     <div class="form-group">
       <textarea
         class="form-control"
@@ -23,15 +23,18 @@
     </button>
   </form>
 </div>
+<?php flash("post_message");?>
+<?php foreach($data["comments"] as $comment) : ?>
 <div class="media card card-body">
   <div class="media-body">
     <h4 class="media-heading">
-      <strong>username</strong>
-      <small>comment_date</small>
+      <strong><?php echo $comment->username; ?></strong>
+      <small class="text-muted"><?php echo $comment->comment_created?></small>
     </h4>
-    <p>aaaaaaaaaaaaaaaaaaaaa</p>
+    <p><?php echo $comment->comment_content; ?></p>
   </div>
 </div>
+<?php endforeach; ?>
 <hr class="mt-5">
 <?php if(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "Admin") :?>
 <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>" method="POST">

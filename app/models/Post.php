@@ -68,4 +68,27 @@
                 return false;
             }
         }
+
+        public function getComments($id){
+            $this->db->query("SELECT * FROM (SELECT * FROM posts where post_id = :id) as p 
+                              INNER JOIN comments as c on p.post_id = c.comment_post_id 
+                              INNER JOIN users as u on c.comment_user_id = u.user_id");
+            $this->db->bind(":id", $id);
+
+            return $this->db->resultSet();
+        }
+
+        public function addComment($data){
+            $this->db->query("INSERT INTO comments (comment_user_id, comment_post_id, comment_content) 
+                              VALUES (:comment_user_id, :comment_post_id, :comment_content)");
+            $this->db->bind(":comment_user_id", $data["new_comment_user"]);
+            $this->db->bind(":comment_post_id", $data["post_id"]);
+            $this->db->bind(":comment_content", $data["new_comment"]);
+            
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

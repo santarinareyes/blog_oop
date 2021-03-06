@@ -38,13 +38,34 @@
         public function post($id){
             $category = $this->categoryModel->getCategories();
             $post = $this->postModel->getSinglePost($id);
+            $comments = $this->postModel->getComments($id);
             $user = $this->userModel->getUserById($post->post_user_id);
 
             $data = [
                 "category" => $category,
+                "post_id" => $id,
                 "post" => $post,
-                "user" => $user
+                "comments" => $comments,
+                "user" => $user,
+                "new_comment" => "",
+                "new_comment_user" => "",
             ];
+
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $data["new_comment"] = $_POST["comment_content"];
+                $data["new_comment_user"] = $_SESSION["user_id"];
+
+                if(!empty($data["new_comment"])) {
+                    if($this->postModel->addComment($data)) {
+                        flash("post_message", "Comment submitted");
+                        redirect("categories/post/$id");
+                    } else {
+                        die("Something went wrong!");
+                    }
+                }
+            }
+
             $this->view("categories/post", $data);
         }
 
@@ -64,11 +85,12 @@
                 }
 
                 if(!empty($data["title"])){
-                    if($this->categoryModel->addCategory($data));
-                    flash("post_message", "Category created");
-                    redirect("categories");
-                } else {
-                    die("Something went wrong!");
+                    if($this->categoryModel->addCategory($data)) {
+                        flash("post_message", "Category created");
+                        redirect("categories");
+                    } else {
+                        die("Something went wrong!");
+                    }
                 }
 
                 $this->view("categories/add", $data);
