@@ -20,11 +20,6 @@
             </select>
             <span class="invalid-feedback"><?php echo $data['post_category_err']; ?></span>
         </div>
-        <div class="form-group mt-3 <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>">
-        <label for="image">Select Image</label>
-        <input type="file" name="image" class="form-control">
-        <span class="invalid-feedback"><?php echo $data['image_err']; ?></span>
-        </div>
         <div class="form-group mt-3">
             <label for="content">Content: <sup>*</sup></label>
             <textarea rows="10" cols="30" style="resize: none" name="content" class="form-control form-control-lg <?php echo (!empty($data["content_err"])) ? 'is-invalid' : ''; ?>"><?php echo $data['content']; ?></textarea>

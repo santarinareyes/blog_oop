@@ -52,6 +52,10 @@
                     $data["title_err"] = "Please enter title";
                 }
 
+                if(strlen($data["title"]) > 25){
+                    $data["title_err"] = "Title is too long. Max 25 characters is allowed";
+                }
+
                 if($data["post_category"] === "no"){
                     $data["post_category_err"] = "Please choose a category";
                 }
@@ -112,15 +116,12 @@
             $category = $this->categoryModel->getCategories();
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                
+
                 $data = [
                     "category" => $category,
                     "id" => $id,
                     "title" => trim($_POST["title"]),
                     "post_category" => $_POST["category"],
-                    "image" => $_FILES["image"]["name"],
-                    "image_tmp" => $_FILES["image"]["tmp_name"],
-                    "image_size" => $_FILES["image"]["size"],
                     "content" => trim($_POST["content"]),
                     "tags" => trim($_POST["tags"]),
                     "user_id" => $_SESSION["user_id"],
@@ -142,7 +143,11 @@
                     $data["content_err"] = "Please enter content";
                 }
 
-                if(empty($data["title_err"]) && empty($data["content_err"]) && empty($data["post_category_err"])){
+                if(empty($data["content"])){
+                    $data["content_err"] = "Please enter content";
+                }
+
+                if(empty($data["title_err"]) && empty($data["content_err"]) && empty($data["post_category_err"]) && empty($data["image_err"])){
                     if($this->postModel->updatePost($data)){
                         flash("post_message", "Post Updated");
                         redirect("posts");

@@ -6,14 +6,14 @@
     <span>Written by <?php echo $data["user"]->username?></span> <span class="pull-right"> on <?php echo $data["post"]->post_created; ?></span>
 </div>
 <p><?php echo $data["post"]->post_content; ?></p>
+<hr>
 <p class="btn btn-secondary disabled">Tags <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></p>
 <?php foreach($data['tags'] as $tag) : ?>
 <p class="btn btn-secondary disabled"><?php echo $tag;?></p>
 <?php endforeach;?>
-<hr>
 <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data["post"]->post_id; ?>" method="POST">
 <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data["post"]->post_id; ?>" class="btn btn-outline-secondary">Edit</a>
-<input class="btn btn-outline-danger pull-right" type="submit" value="Delete">
+<input class="btn btn-outline-danger" type="submit" value="Delete">
 </form>
 <hr>
 <?php require APPROOT . "/views/includes/footer.php" ?>

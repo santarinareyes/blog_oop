@@ -1,5 +1,5 @@
 <?php require APPROOT . "/views/includes/header.php"; ?>
-<a href="<?php echo URLROOT ?>/posts" class="btn btn-light"><i class="fa fa-chevron-left"></i> Go back</a>
+<a href="<?php echo URLROOT ?>/posts" class="btn btn-light"><i class="fa fa-chevron-left"></i> Go to all posts</a>
 <div class="card card-body bg-light mt-5">
     <h2>Add post</h2>
     <form action="<?php echo URLROOT; ?>/posts/add" method="POST" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group mt-3">
         <label for="image">Select Image</label>
-        <input type="file" name="image" class="form-control <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>" >
+        <input type="file" name="image" class="form-control <?php echo (!empty($data["image_err"])) ? 'is-invalid' : ''; ?>">
         <span class="invalid-feedback"><?php echo $data['image_err']; ?></span>
         </div>
         <div class="form-group mt-3">
@@ -28,8 +28,8 @@
             <span class="invalid-feedback"><?php echo $data['content_err']; ?></span>
         </div>
         <div class="form-group mt-3">
-        <label for="tags">Tags</label>
-        <input type="text" name="tags" class="form-control">
+        <label for="tags">Tags (Seperate each tag with a comma. <span class="text-muted">Example: tag1, tag2 etc...</span>)</label>
+        <input type="text" name="tags" class="form-control" value="<?php echo $data['tags']; ?>">
         </div>
         <div class="col pull-right mt-3">
             <input type="submit" value="Create post" class="btn btn-primary">
