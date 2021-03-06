@@ -102,4 +102,9 @@
                 return false;
             }
         }
+
+        public function latestPosts(){
+            $this->db->query("SELECT * FROM posts ORDER BY post_id DESC LIMIT 3");
+            return $this->db->resultSet();
+        }
     }
