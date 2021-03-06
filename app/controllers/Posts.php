@@ -175,6 +175,66 @@
             }
         }
 
+        public function image($id){
+            $category = $this->categoryModel->getCategories();
+            $post = $this->postModel->getSinglePost($id);
+            
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                $data = [
+                    "post_id" => $id,
+                    "post_category" => $_POST["category"],
+                    "image" => $_FILES['image']['name'],
+                    "image_tmp" => $_FILES['image']['tmp_name'],
+                    "image_size" => $_FILES['image']['size'],
+                    "image_type" => $_FILES['image']['type'],
+                    "image_error" => $_FILES['image']['error'],
+                    "image_err" => "",
+                ];
+
+                $fileExt = explode(".", $data["image"]);
+                $fileActualExt = strtolower(end($fileExt));
+                
+                $allowed = array("jpg", "jpeg", "gif", "png");
+
+                if(in_array($fileActualExt, $allowed)){
+                    if($data["image_error"] === 0){
+                        if($data["image_size"] < 524288){
+                            $new_name = uniqid("", true) . "." . $fileActualExt;
+                            $filePath = "../public/images/$new_name";
+                            $data["image"] = $new_name;
+                            move_uploaded_file($data["image_tmp"], $filePath);
+                        } else {
+                            $data["image_err"] = "File must be 500kB or lower";
+                        }
+                    } else {
+                        $data["image_err"] = "There was an error uploading your file";
+                    }
+                } else {
+                    $data["image_err"] = "File must be an image of type: JPG, JPEG, GIF or PNG";
+                }
+
+                if(empty($data["image_err"])){
+                    if($this->postModel->updateImage($data)){
+                        flash("post_message", "Image Updated");
+                        redirect("posts");
+                    } else {
+                        die("Something went wrong!");
+                    }
+                } else {
+                    $this->view("posts/image", $data);
+                }
+
+            } else {
+                $data = [
+                    "post_id" => $id,
+                    "category" => $category,
+                    "post" => $post
+                ];
+                $this->view("posts/image", $data);
+            }
+        }
+
         public function show($id){
             $category = $this->categoryModel->getCategories();
             $post = $this->postModel->getSinglePost($id);

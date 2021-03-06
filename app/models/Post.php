@@ -59,6 +59,18 @@
             return $row = $this->db->single();
         }
 
+        public function updateImage($data){
+            $this->db->query("UPDATE posts SET post_image = :post_image WHERE post_id = :id");
+            $this->db->bind(":id", $data["post_id"]);
+            $this->db->bind(":post_image", $data["image"]);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function deletePost($id){
             $this->db->query("DELETE FROM posts WHERE post_id = :id");
             $this->db->bind(":id", $id);

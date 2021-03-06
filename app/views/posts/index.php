@@ -24,6 +24,7 @@
                                     <div class="btn-group">
                                         <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">View</a>
                                         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="<?php echo URLROOT; ?>/posts/image/<?php echo $post->post_id; ?>" type="button" class="btn btn-sm btn-outline-secondary">Change image</a>
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
                                 </form>
                                 </div>
