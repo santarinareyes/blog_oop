@@ -152,6 +152,20 @@
                 if($this->categoryModel->deleteCategory($id)){
                     flash("post_message", "Category deleted");
                     redirect("categories");
+                } else {
+                    die("Something went wrong!");
+                }
+            }
+        }
+
+        public function commentDelete($id){
+            $post_id = $_GET["post"];
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                if($this->postModel->deleteComment($id)){
+                    flash("post_message", "Comment deleted");
+                    redirect("categories/post/$post_id");
+                } else {
+                    die("Something went wrong!");
                 }
             }
         }

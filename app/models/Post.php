@@ -91,4 +91,15 @@
                 return false;
             }
         }
+
+        public function deleteComment($id){
+            $this->db->query("DELETE FROM comments WHERE comment_id = :id");
+            $this->db->bind(":id", $id);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
