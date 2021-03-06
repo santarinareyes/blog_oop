@@ -16,7 +16,7 @@
 <hr class="featurette-divider">
 <div class="row featurette">
   <div class="col-md-7">
-    <h2 class="featurette-heading"><?php echo $data["posts"][0]->post_title;?> <span class="text-muted"><small><small><?php echo $data["posts"][0]->post_created;?></small></small></span></h2>
+    <h2 class="featurette-heading"><a href="<?php echo URLROOT; ?>/categories/post/<?php echo $data["posts"][0]->post_id;?>" class="link-dark" style="text-decoration: none;"><?php echo $data["posts"][0]->post_title;?></a> <span class="text-muted"><small><small><?php echo $data["posts"][0]->post_created;?></small></small></span></h2>
     <p class="lead"><?php echo $data["posts"][0]->post_content;?></p>
   </div>
   <div class="col-md-5">
@@ -29,7 +29,7 @@
 
 <div class="row featurette">
   <div class="col-md-7 order-md-2">
-    <h2 class="featurette-heading"><?php echo $data["posts"][1]->post_title;?> <span class="text-muted"><small><small><?php echo $data["posts"][1]->post_created;?></small></small></span></h2>
+    <h2 class="featurette-heading"><a href="<?php echo URLROOT; ?>/categories/post/<?php echo $data["posts"][1]->post_id;?>" class="link-dark" style="text-decoration: none;"><?php echo $data["posts"][1]->post_title;?></a> <span class="text-muted"><small><small><?php echo $data["posts"][1]->post_created;?></small></small></span></h2>
     <p class="lead"><?php echo $data["posts"][1]->post_content;?></p>
   </div>
   <div class="col-md-5 order-md-1">
@@ -42,7 +42,7 @@
 
 <div class="row featurette">
   <div class="col-md-7">
-    <h2 class="featurette-heading"><?php echo $data["posts"][2]->post_title;?> <span class="text-muted"><small><small><?php echo $data["posts"][2]->post_created;?></small></small></span></h2>
+    <h2 class="featurette-heading"><a href="<?php echo URLROOT; ?>/categories/post/<?php echo $data["posts"][2]->post_id;?>" class="link-dark" style="text-decoration: none;"><?php echo $data["posts"][2]->post_title;?></a> <span class="text-muted"><small><small><?php echo $data["posts"][2]->post_created;?></small></small></span></h2>
     <p class="lead"><?php echo $data["posts"][2]->post_content;?></p>
   </div>
   <div class="col-md-5">
