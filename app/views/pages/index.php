@@ -9,7 +9,7 @@
         </div>
     </div>
 
-<?php if(isset($_SESSION["user_id"])) :?>
+<?php if(isset($_SESSION["user_id"]) && count($data["posts"]) >= 1) :?>
 <div class="container">
 <!-- START THE FEATURETTES -->
 
@@ -27,6 +27,7 @@
 
 <hr class="featurette-divider">
 
+<?php if(count($data["posts"]) >= 2) :?>
 <div class="row featurette">
   <div class="col-md-7 order-md-2">
     <h2 class="featurette-heading"><a href="<?php echo URLROOT; ?>/categories/post/<?php echo $data["posts"][1]->post_id;?>" class="link-dark" style="text-decoration: none;"><?php echo $data["posts"][1]->post_title;?></a> <span class="text-muted"><small><small><?php echo $data["posts"][1]->post_created;?></small></small></span></h2>
@@ -40,6 +41,7 @@
 
 <hr class="featurette-divider">
 
+<?php if(count($data["posts"]) >= 3) : ?>
 <div class="row featurette">
   <div class="col-md-7">
     <h2 class="featurette-heading"><a href="<?php echo URLROOT; ?>/categories/post/<?php echo $data["posts"][2]->post_id;?>" class="link-dark" style="text-decoration: none;"><?php echo $data["posts"][2]->post_title;?></a> <span class="text-muted"><small><small><?php echo $data["posts"][2]->post_created;?></small></small></span></h2>
@@ -53,5 +55,7 @@
 
 <hr class="featurette-divider">
 </div><!-- /.container -->
+<?php endif;?>
+<?php endif;?>
 <?php endif;?>
 <?php require APPROOT . "/views/includes/footer.php" ?>
