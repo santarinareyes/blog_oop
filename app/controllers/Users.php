@@ -155,4 +155,56 @@
             session_destroy();
             redirect("users/login");
         }
+
+        public function account($id){
+            if($_SESSION["user_id"] === $id) {
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                    
+                    $data = [
+                        "id" => $id,
+                        "password" => $_POST["password"],
+                        "confirm_password" => $_POST["confirm_password"],
+                        "password_err" => "",
+                        "confirm_password_err" => "",
+                    ];
+
+                    if(empty($data["password"])){
+                        $data["password_err"] = "Please enter new password";
+                    } else if (strlen($data["password"]) < 6){
+                        $data["password_err"] = "Password must be atleast 6 characters";
+                    }
+
+                    if(empty($data["confirm_password"])){
+                        $data["confirm_password_err"] = "Please confirm new password";
+                    }
+                    
+                    if($data["password"] !== $data["confirm_password"]) {
+                        $data["confirm_password_err"] = "Password does not match";
+                    }
+
+                    if(empty($data["password_err"]) && empty($data["confirm_password_err"])){
+                        $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+                        if($this->userModel->accountEdit($data)){
+                            flash("post_message", "Password has been changed");
+                            redirect("pages");
+                        }
+                    } else {
+                        $this->view("users/account", $data);
+                    }
+
+
+                } else {
+
+                    $data = [
+                        "password" => "",
+                        "confirm_password" => "",
+                    ];
+
+                    $this->view("users/account", $data);
+                }
+            } else {
+                redirect("pages");
+            }
+        }
     }

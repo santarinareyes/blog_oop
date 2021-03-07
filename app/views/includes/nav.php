@@ -29,7 +29,12 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/posts">Posts</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/categories">Categories</a></li>
+                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION["user_id"];?>">Account</a></li>
                   </ul>
+              </li>
+            <?php elseif(isset($_SESSION["user_status"]) && $_SESSION["user_status"] === "User") :?>
+              <li class="nav-item dropdown">
+                <a href="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION["user_id"];?>" class="nav-link">Account</a>
               </li>
           <?php endif; ?>
           <?php if(isset($_SESSION["username"])) : ?>

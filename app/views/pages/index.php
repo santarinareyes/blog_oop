@@ -1,4 +1,5 @@
 <?php require APPROOT . "/views/includes/header.php"; ?>
+    <?php flash("post_message");?>  
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic"><?php echo $data["title"];?></h1>
@@ -8,7 +9,6 @@
             <?php endif;?>
         </div>
     </div>
-
 <?php if(isset($_SESSION["user_id"]) && count($data["posts"]) >= 1) :?>
 <div class="container">
 <!-- START THE FEATURETTES -->

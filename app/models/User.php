@@ -67,4 +67,17 @@
 
             return $row = $this->db->single();
         }
+
+        public function accountEdit($data){
+            $this->db->query("UPDATE users SET user_pass = :password
+                              WHERE user_id = :id");
+            $this->db->bind(":id", $data["id"]);
+            $this->db->bind(":password", $data["password"]);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

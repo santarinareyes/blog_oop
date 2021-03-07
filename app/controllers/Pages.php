@@ -4,6 +4,7 @@
         {
             $this->categoryModel = $this->model("category");
             $this->postModel = $this->model("Post");
+            $this->userModel = $this->model("User");
         }
 
         public function index(){
@@ -18,7 +19,6 @@
             ];
 
             $this->view("pages/index", $data);
-            $this->view("includes/nav", $data);
         }
         
         public function about(){
