@@ -21,13 +21,17 @@
             $this->view("categories/index", $data);
         }
 
-        public function show($id){
+        public function show($id, $currentPage = ""){
             $category = $this->categoryModel->singleCategory($id);
             $categories = $this->categoryModel->getCategories();
-            $post = $this->categoryModel->getCategoryPosts($id);
+            $post = $this->categoryModel->getCategoryPosts($id, $currentPage);
+            $count = count($this->categoryModel->catPostPagination($id));
+            $count = ceil($count / 9);
 
             $data = [
                 "posts" => $post,
+                "count" => $count,
+                "page" => $currentPage,
                 "singleCat" => $category,
                 "category" => $categories
             ];

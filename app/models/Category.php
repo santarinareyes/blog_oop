@@ -18,7 +18,30 @@
             return $results = $this->db->resultSet();
         }
 
-        public function getCategoryPosts($id){
+        public function getCategoryPosts($id, $page){
+            $this->db->query("SELECT * FROM (SELECT * FROM posts WHERE post_category_id = :id) as p
+                              INNER JOIN users as u on p.post_user_id = u.user_id
+                              ORDER BY p.post_created DESC");
+            $this->db->bind(":id", $id);
+
+            $count = $this->db->rowCount();
+            $count = ceil($count / 9);
+
+            if($page === 1 || $page === ''){
+                $page_1 = 0;
+            } else {
+                $page_1 = ($page * 9) - 9;
+            }
+
+            $this->db->query("SELECT * FROM (SELECT * FROM posts WHERE post_category_id = :id) as p
+                              INNER JOIN users as u on p.post_user_id = u.user_id
+                              ORDER BY p.post_created DESC LIMIT $page_1, 9");
+                              $this->db->bind(":id", $id);
+
+            return $results = $this->db->resultSet();
+        }
+
+        public function catPostPagination($id){
             $this->db->query("SELECT * FROM (SELECT * FROM posts WHERE post_category_id = :id) as p
                               INNER JOIN users as u on p.post_user_id = u.user_id
                               ORDER BY p.post_created DESC");

@@ -39,5 +39,10 @@
         </div>
     <?php endforeach;?>
 </div>
+<ul class="pagination d-flex justify-content-center mt-5">
+        <?php for($i = 1; $i < $data["count"] + 1; $i++){?>
+            <li class="page-item <?php echo ($i == $data["page"]) ? 'active' : ''; ?>"><a class="page-link" href="<?php echo URLROOT; ?>/categories/show/<?php echo $data["singleCat"]->cat_id . "/" . $i ?>"><?php echo $i; ?></a></li>
+        <?php } ?>
+        </ul>
 <hr class="mt-5">
 <?php require APPROOT . "/views/includes/footer.php" ?>
