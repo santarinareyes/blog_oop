@@ -157,11 +157,13 @@
         }
 
         public function account($id){
+            $category = $this->categoryModel->getCategories();
             if($_SESSION["user_id"] === $id) {
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                     
                     $data = [
+                        "category" => $category,
                         "id" => $id,
                         "password" => $_POST["password"],
                         "confirm_password" => $_POST["confirm_password"],
@@ -197,6 +199,7 @@
                 } else {
 
                     $data = [
+                        "category" => $category,
                         "password" => "",
                         "confirm_password" => "",
                     ];
