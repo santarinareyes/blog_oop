@@ -7,12 +7,32 @@
             $this->db = new Database;
         }
 
-        public function getPosts(){
+        public function pagination(){
+            $this->db->query("SELECT * FROM posts as p
+            INNER JOIN users as u on p.post_user_id = u.user_id
+            ORDER BY p.post_created DESC");
+
+            return $this->db->resultSet();
+        }
+
+        public function getPosts($page){
             $this->db->query("SELECT * FROM posts as p
                               INNER JOIN users as u on p.post_user_id = u.user_id
                               ORDER BY p.post_created DESC");
+            $count = $this->db->rowCount();
+            $count = ceil($count / 9);
 
-            return $results = $this->db->resultSet();
+            if($page === 1 || $page === ''){
+                $page_1 = 0;
+            } else {
+                $page_1 = ($page * 9) - 9;
+            }
+
+            $getRows = $this->db->query("SELECT * FROM posts as p
+                                         INNER JOIN users as u on p.post_user_id = u.user_id
+                                         ORDER BY p.post_created DESC LIMIT $page_1, 9");
+
+            return $this->db->resultSet();
         }
 
         public function addPost($data){

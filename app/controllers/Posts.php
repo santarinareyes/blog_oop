@@ -13,11 +13,15 @@
             $this->categoryModel = $this->model("Category");
         }
         
-        public function index(){
+        public function index($currentPage = ""){
             $category = $this->categoryModel->getCategories();
-            $posts = $this->postModel->getPosts();
+            $posts = $this->postModel->getPosts($currentPage);
+            $count = count($this->postModel->pagination());
+            $count = ceil($count / 9);
 
             $data = [
+                "count" => $count,
+                "page" => $currentPage,
                 "posts" => $posts,
                 "category" => $category
             ];
