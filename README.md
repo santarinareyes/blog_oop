@@ -2,13 +2,10 @@
 * Step 1. Go to app > config > config.php
 * Step 2. Change accordingly
 * Step 3. Create the database (Found below **THE DATABASE**)
-* Step 4. Login to website using admin
-```
-Username: Admin
-Password: Admin123
-```
-* Step 5. Create categories
-* Step 6. Create posts
+* Step 4. Go to the website and register. First registrered user will always be Admin.
+* Step 5. Login
+* Step 6. Create categories
+* Step 7. Create posts
 
 **THE DATABASE**:
 ```
