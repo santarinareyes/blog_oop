@@ -17,8 +17,8 @@
             <div class="card shadow-sm">
                 <img src="<?php echo URLROOT; ?>/images/<?php echo $post->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
                     <div class="card-body">
-                        <h4 class="card-title"><?php echo $post->post_title?></h4>
-                        <p style="min-height: 5rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
+                        <h4 class="card-title"><?php echo $post->post_title?> <?php if(!$post->post_category_id) : ?><small class="btn btn-sm btn-outline-secondary text-danger pull-right"><i class="fa fa-exclamation-triangle"></i> NO CATEGORY</small><?php endif;?></h4>
+                        <p style="min-height: 10rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                                 <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $post->post_id ?>" method="post">
                                     <div class="btn-group">

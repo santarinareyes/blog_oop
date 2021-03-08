@@ -20,7 +20,7 @@
             <img src="<?php echo URLROOT; ?>/images/<?php echo $post->post_image; ?>" alt=""  class="bd-placeholder-img card-img-top" width="100%" height="225">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $post->post_title?></h4>
-                        <p style="min-height: 5rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
+                        <p style="min-height: 10rem;" class="card-text"><?php echo substr($post->post_content, 0, 150) . "<span class='text-muted'>...</span>"; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                                 <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $post->post_id ?>" method="post">
                                     <div class="btn-group">

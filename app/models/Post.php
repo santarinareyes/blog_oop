@@ -139,6 +139,7 @@
         public function latestPosts(){
             $this->db->query("SELECT * FROM posts as p
                               INNER JOIN users as u on p.post_user_id = u.user_id
+                              WHERE post_category_id IS NOT NULL
                               ORDER BY post_id DESC LIMIT 3");
             return $this->db->resultSet();
         }
