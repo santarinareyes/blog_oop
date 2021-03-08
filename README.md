@@ -1,12 +1,18 @@
-HOW TO START:
-Step 1. Go to app > config > config.php
-Step 2. Change accordingly
-Step 3. Create the database:
+**HOW TO START**:
+* Step 1. Go to app > config > config.php
+* Step 2. Change accordingly
+* Step 3. Create the database (Found below **THE DATABASE**)
+* Step 4. Login to website using admin
+```
+Username: Admin
+Password: Admin123
+```
+* Step 5. Create categories
+* Step 6. Create posts
 
-CREATE DATABASE IF NOT EXISTS `blogoop`;
-USE `blogoop`;
-
-DROP TABLE IF EXISTS users;
+**THE DATABASE**:
+```
+DROP TABLE IF EXISTS users; 
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS comments;
@@ -34,7 +40,7 @@ Engine = InnoDb;
 CREATE TABLE posts (
 post_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 post_user_id INT,
-post_cat_id INT,
+post_category_id INT,
 post_title VARCHAR(255),
 post_image VARCHAR(255),
 post_content TEXT,
@@ -56,3 +62,4 @@ FOREIGN KEY (comment_user_id) REFERENCES users(user_id),
 FOREIGN KEY (comment_post_id) REFERENCES posts(post_id)
 )
 Engine = InnoDb;
+```
