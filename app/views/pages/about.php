@@ -5,4 +5,13 @@
             <p class="lead my-3"><?php echo $data["description"];?></p>
         </div>
     </div>
+    <hr>
+    <main role="main" class="container col-md-10 mx-auto">
+    <div class="starter-template mt-5 text-wrap">
+    <h1><?php echo $data["intro"];?></h1>
+    <p class="lead mt-5"><?php echo $data["about"];?><br/><br/><?php echo $data["body"];?></p>
+    </div>
+
+</main><!-- /.container -->
+    <hr class="mt-5">
 <?php require APPROOT . "/views/includes/footer.php" ?>

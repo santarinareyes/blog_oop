@@ -27,8 +27,13 @@
             $data = [
                 "title" => "About Millhouse Blog",
                 "description" => "Welcome to the blog. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, corporis.",
-                "category" => $category
+                "category" => $category,
+                "intro" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit?",
+                "about" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit?",
+                "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat saepe praesentium optio nam. Dignissimos officia cumque, aut fugit ullam quia saepe natus laudantium repudiandae suscipit?",
             ];
             $this->view("pages/about", $data);
         }
     }
+
+    

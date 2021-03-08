@@ -137,7 +137,9 @@
         }
 
         public function latestPosts(){
-            $this->db->query("SELECT * FROM posts ORDER BY post_id DESC LIMIT 3");
+            $this->db->query("SELECT * FROM posts as p
+                              INNER JOIN users as u on p.post_user_id = u.user_id
+                              ORDER BY post_id DESC LIMIT 3");
             return $this->db->resultSet();
         }
     }

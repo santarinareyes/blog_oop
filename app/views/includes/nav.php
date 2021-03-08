@@ -27,7 +27,7 @@
             <li class="nav-item dropdown">
                 <a href="<?php echo URLROOT; ?>/categories" class="nav-link" role="button" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
-                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/posts">Posts</a></li>
+                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/index/1">Posts</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/categories">Categories</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION["user_id"];?>">Account</a></li>
                   </ul>
