@@ -2,7 +2,15 @@ HOW TO START:
 * Step 1. Go to app > config > config.php
 * Step 2. Change accordingly
 * Step 3. Create the database:
+* Step 4. Login to website using admin
+```
+Username: Admin
+Password: Admin123
+```
+* Step 5. Create categories
+* Step 6. Create posts
 
+THE DATABASE:
 ```
 DROP TABLE IF EXISTS users; 
 DROP TABLE IF EXISTS categories;
