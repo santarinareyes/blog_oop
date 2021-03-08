@@ -8,11 +8,20 @@
         }
 
         public function register($data){
+            $this->db->query("SELECT * FROM users");
+            $count = $this->db->resultSet();
+
+            if(count($count) < 1){
+                $status = "Admin";
+            } else {
+                $status = "User";
+            }
+
             $this->db->query("INSERT INTO users (username, user_email, user_pass, user_status) VALUES (:username, :user_email, :user_pass, :user_status)");
             $this->db->bind(":username", $data['username']);
             $this->db->bind(":user_email", $data['email']);
             $this->db->bind(":user_pass", $data['password']);
-            $this->db->bind(":user_status", "User");
+            $this->db->bind(":user_status", $status);
 
             if($this->db->execute()){
                 return true;
