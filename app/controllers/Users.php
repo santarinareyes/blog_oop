@@ -210,4 +210,65 @@
                 redirect("pages");
             }
         }
+
+        public function list(){
+            $users = $this->userModel->getUsers();
+
+            $data = [
+                "users" => $users
+            ];
+            
+            $this->view("users/list", $data);
+        }
+
+        public function promote($id){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $user = $this->userModel->singleUser($id);
+
+                    $data = [
+                        "user" => $user
+                    ];
+
+                if($this->userModel->promoteUser($id)){
+                    flash("post_message", $data["user"]->username . " promoted to Admin");
+                    redirect("users/list");
+                } else {
+                    die("Something went wrong!");
+                }
+            }
+        }
+
+        public function demote($id){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $user = $this->userModel->singleUser($id);
+
+                    $data = [
+                        "user" => $user
+                    ];
+
+                if($this->userModel->demoteUser($id)){
+                    flash("post_message", $data["user"]->username . " demoted to User");
+                    redirect("users/list");
+                } else {
+                    die("Something went wrong!");
+                }
+            }
+        }
+
+        public function delete($id){
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $user = $this->userModel->singleUser($id);
+
+                    $data = [
+                        "user" => $user
+                    ];
+
+                if($this->userModel->deleteUser($id)){
+                    flash("post_message", $data["user"]->username . " deleted");
+                    redirect("users/list");
+                } else {
+                    die("Something went wrong!");
+                }
+            }
+        }
     }

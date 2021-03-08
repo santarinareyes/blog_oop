@@ -89,4 +89,52 @@
                 return false;
             }
         }
+
+        public function singleUser($id){
+            $this->db->query("SELECT * FROM users WHERE user_id = :id");
+            $this->db->bind(":id", $id);
+
+            return $this->db->single();
+        }
+
+        public function getUsers(){
+            $this->db->query("SELECT * FROM users ORDER BY user_status");
+
+            return $this->db->resultSet();
+        }
+
+        public function promoteUser($id){
+            $this->db->query("UPDATE users SET user_status = :user_status WHERE user_id = :id");
+            $this->db->bind(":user_status", "Admin");
+            $this->db->bind(":id", $id);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function demoteUser($id){
+            $this->db->query("UPDATE users SET user_status = :user_status WHERE user_id = :id");
+            $this->db->bind(":user_status", "User");
+            $this->db->bind(":id", $id);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteUser($id){
+            $this->db->query("DELETE FROM users WHERE user_id = :id");
+            $this->db->bind(":id", $id);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

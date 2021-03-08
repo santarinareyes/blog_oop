@@ -29,6 +29,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/index/1">Posts</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/categories">Categories</a></li>
+                      <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/users/list">Users</a></li>
                       <li><a class="dropdown-item" href="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION["user_id"];?>">Account</a></li>
                   </ul>
               </li>
@@ -48,12 +49,19 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT ?>/users/login">Login</a>
           </li>
-        <?php endif; ?>
         </ul>
+        <?php endif; ?>
+          <?php if(isset($_SESSION["username"])) : ?>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
+        <?php else : ?>
+          <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Login to use search" aria-label="Search" readonly>
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </form>
+        <?php endif; ?>
       </div>
     </div>
   </nav>
