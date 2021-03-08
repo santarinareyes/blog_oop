@@ -3,10 +3,8 @@ HOW TO START:
 * Step 2. Change accordingly
 * Step 3. Create the database:
 
-CREATE DATABASE IF NOT EXISTS `blogoop`;
-USE `blogoop`;
-
-DROP TABLE IF EXISTS users;
+```
+DROP TABLE IF EXISTS users; 
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS comments;
@@ -56,3 +54,4 @@ FOREIGN KEY (comment_user_id) REFERENCES users(user_id),
 FOREIGN KEY (comment_post_id) REFERENCES posts(post_id)
 )
 Engine = InnoDb;
+```
