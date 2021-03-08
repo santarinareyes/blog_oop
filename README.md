@@ -1,4 +1,4 @@
-HOW TO START:
+**HOW TO START**:
 * Step 1. Go to app > config > config.php
 * Step 2. Change accordingly
 * Step 3. Create the database (Found below **THE DATABASE**)
