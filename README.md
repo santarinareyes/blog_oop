@@ -24,10 +24,6 @@ user_status VARCHAR(50)
 )
 Engine = InnoDb;
 
-INSERT INTO users (username, user_email, user_pass, user_status)
-VALUES
-("Admin","Admin@admin.admin","Admin123","Admin");
-
 CREATE TABLE categories (
 cat_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 cat_title VARCHAR(255)
