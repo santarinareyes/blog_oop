@@ -143,4 +143,13 @@
                               ORDER BY post_id DESC LIMIT 3");
             return $this->db->resultSet();
         }
+
+        public function searchPost($data){
+            $this->db->query("SELECT * FROM posts p
+                              INNER JOIN users u ON p.post_user_id = u.user_id 
+                              WHERE concat(post_content, post_tags) LIKE :search");
+            $this->db->bind(":search", $data);
+
+            return $this->db->resultSet();
+        }
     }

@@ -183,6 +183,20 @@
         }
 
         public function search(){
-            
+            $category = $this->categoryModel->getCategories();
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                    $posts = $this->postModel->searchPost("%" . trim($_POST["search"]) . "%");
+                
+                $data = [
+                    "category" => $category,
+                    "posts" => $posts
+                ];
+
+                $this->view("categories/search", $data);
+                
+            } else {
+                redirect("pages");
+            }
         }
     }

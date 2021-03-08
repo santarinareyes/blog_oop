@@ -52,8 +52,8 @@
         </ul>
         <?php endif; ?>
           <?php if(isset($_SESSION["username"])) : ?>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="<?php echo URLROOT; ?>/categories/search" method="post" class="d-flex">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
         <?php else : ?>

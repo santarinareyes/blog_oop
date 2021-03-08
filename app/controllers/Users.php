@@ -212,9 +212,11 @@
         }
 
         public function list(){
+            $category = $this->categoryModel->getCategories();
             $users = $this->userModel->getUsers();
 
             $data = [
+                "category" => $category,
                 "users" => $users
             ];
             
