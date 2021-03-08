@@ -40,7 +40,7 @@ Engine = InnoDb;
 CREATE TABLE posts (
 post_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 post_user_id INT,
-post_cat_id INT,
+post_category_id INT,
 post_title VARCHAR(255),
 post_image VARCHAR(255),
 post_content TEXT,
